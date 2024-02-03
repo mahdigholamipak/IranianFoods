@@ -1,0 +1,355 @@
+﻿@model ICollection< IranianFoods.Models.ViewModels.FoodViewModel>
+@{
+    ViewData["Title"] = "Home Page";
+}
+<div class="main-wrapper">
+    <!-- Start Header Content -->
+
+    <div class="banner-area">
+        <div class="container">
+            <div class="row height bg-main">
+
+                <div class="banner-content text-header">
+                    <h2 class="text-white">
+                        معرفی غذاهای ایرانی<h2></h2><br></br>
+                        <p class="text-white">
+
+                            آشپزی در مورد عشق و علاقه‌ی بین انسان‌هاست.
+                            غذا شاید تنها وجه مشترک بین انسان‌های جهان باشد
+                            که قدرت آشتی دادن بین آن‌ها دارد.
+                            مهم نیست چه فرهنگی داشته باشید،
+                            مردم سراسر جهان برای غذا خوردن دور هم جمع می‌شوند.
+                        </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Header Content -->
+</div>
+<div class="main-wrapper">
+    <!-- Start Feature Area -->
+    <section class="featured-area" style="background: #a17575 !important;">
+        <div class="container">
+            <button class="btn btn-success">
+                <a class="nav-link text-dark h4" asp-area="" asp-controller="Foods"
+                   asp-action="Create">افزودن</a>
+            </button>
+            <div class="row">
+
+                @foreach (var food in Model)
+                {
+                    <!-- Start Feature Box -->
+                    <div class="col-md-4">
+                        <div class="single-feature text-center" style="background-color: white; border-radius: 20px;">
+
+                            <img style="width: 100%; object-fit: cover; height: 200px; border-radius: 20px;" src="@food.ImagePath" alt="@food.Name" />
+                            <h3>@food.Name</h3>
+                            <p>
+                                @food.Description
+                            </p>
+                            <span>
+                                @if (User.Identity.IsAuthenticated)
+                                {
+                                    <a href="@Url.Action("Edit", "Foods", new { id = food.Id })" class="btn btn-primary">ویرایش</a>
+                                    <a href="@Url.Action("Remove", "Foods", new { id = food.Id })" class="btn btn-danger">حذف</a>
+                                }
+                                else
+                                {
+                                    <a href="@Url.Action("Login")" class="btn btn-secondary">برای ایجاد تغییرات وارد شوید</a>
+                                }
+
+                            </span>
+                        </div>
+                    </div>
+                    <!-- End Feature Box -->
+                }
+
+
+            </div>
+        </div>
+    </section>
+    <!-- End Feature Area -->
+    <!-- Start Testimonial Area -->
+    <section class="section-gap testimonial-area relative">
+        <div class="overlay overlay-bg"></div>
+        <div class="container relative">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="active-testimonial-carousel">
+                        <!-- Start Testimonial Item -->
+                        <div class="item">
+                            <h3>دانلود فایل های رایگان</h3>
+                            <a href="https://www.jowhareh.com/gallery/%D8%B9%DA%A9%D8%B3-%D9%87%D8%A7%DB%8C-%D8%A7%D9%86%D9%88%D8%A7%D8%B9-%D8%BA%D8%B0%D8%A7-%D9%87%D8%A7%DB%8C-%D8%A7%DB%8C%D8%B1%D8%A7%D9%86%DB%8C-%D9%88-%D8%A7%D8%B5%DB%8C%D9%84">ورود به مرکز دانلود</a>
+                        </div>
+                        <!-- End Testimonial Item -->
+                        <div class="item">
+                            <h3>مشاهده آموزشهای رایگان</h3>
+                            <a href="https://mamifood.org/cooking-training">ورود به بلاگ آموزشی</a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="next-trigger">
+                <span class="lnr lnr-arrow-left"></span>
+            </div>
+            <div class="prev-trigger">
+                <span class="lnr lnr-arrow-right"></span>
+            </div>
+        </div>
+    </section>
+    <!-- End Testimonial Area -->
+    <!-- Start Project Area -->
+    <section class="project-area" style="background: #a17575 !important;">
+        <div class="container">
+            <div class="row">
+                <!-- Start Project Box -->
+                <div class="col-md-4">
+                    <div class="single-project" style="background: url(pics/R1.jpg)">
+                        <div class="overlay overlay-content">
+                            <h4> قرمه سبزی </h4>
+                            <p>
+                                قورمه سبزی یکی از غذاهای ملی ما ایرانیان است
+                                و همه بی شک این غذا را دوست دارند
+                                این غذا طعم جذابی همراه خود دارد
+                                این غذا از شهرتی جهانی برخوردار است
+                                همه جای دنیا این غذا را دوست دارند و این غذا را درست می کنند
+                                در بعضی از کشورهای خارجی هم حتی در رستوران هایشان این غذا وجود دارد
+                                به همین دلیل قورمه سبزی غذای ملی شناخته شده است
+                                و یکی از بهترین غذاهای ایرانی شناخته شده است
+                                این غذا هم گرمش به هم سرد قابل خوردن است
+                                و خیلی خوشمزه و لذیذ است
+
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Project Box -->
+                <div class="col-lg-4">
+                    <div class="single-project" style="background: url(pics/R2.jpg)">
+                        <div class="overlay overlay-content">
+                            <h4>زرشک پلو با مرغ </h4>
+                            <p>
+                                شما باید بدانید که زرشک پلو یکی از محبوبترین غذاهای اصیل ایرانی به حساب می آید که همه افراد این غذا را دوست دارند و همه آن را خورده اند زرشک پلو یک غذای معمولی است که همه می توانند آن را درست کنند و و هم در مراسم های عروسی و جشن های دیگر آن را استفاده می کنند این غذا جزو پر مصرف ترین غذاهای دنیا است زرشک پلو با طعم زرشک برای همه بی نظیر است و همه آن را دوست دارند و جالب است بدانید که زرشک در دوران قدیم یکی از گیاهان دارویی بوده است از آن برای داروهای طب سنتی استفاده می‌کردند
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="single-project" style="background: url(pics/R3.jpg)">
+                        <div class="overlay overlay-content">
+                            <h4> کوفته تبریزی </h4>
+                            <p>
+                                کوفته زمان قدیم برای شهر های ترکی بوده است
+                                کشوری مانند هند هم از این غذا استفاده می‌کند
+                                کوفته یک غذای ایرانی است ولی خیلی خوشمزه و لذیذ است
+                                این غذا نونی است و به‌عنوان غذای‌ نونی از آن استفاده می کنند
+                                این غذا از زمان قدیم و تولد تغییر چندانی در پخت آن قرار نگرفته است
+                                این غذا خاصی دارد و فقط افرادی که ترک تبریز هستن
+                                این غذا را می توانم به خوبی درست کنند
+                                در واقع غذای محلی آنها گفته است این غذا را همه می توانند درست کنند
+                                اما ترک ها بهتر می توانند درست کنند
+
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Project Area -->
+    <!-- Start Begining Area -->
+    <section class="section-gap beginning-area">
+        <div class="container">
+            <section class="project-area" style="background: #dad6d6 !important;">
+                <div class="row justify-content-end">
+                    <div class="col-lg-5">
+                        <div class="begining-content">
+                            <h2>  غذای ایرانی </h2>
+                            <p>
+                                آشپزی…
+                                توجه، صبر و مهم تر از همه احترام به هدایای زمین را می طلبد
+                                این نوعی عبادت است، راهی برای شکرگزاری است…
+                            </p>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </section>
+    <!-- End Begining Area -->
+    <!-- Start Contact Area -->
+    <section class="section-gap contact-area">
+        <div class="container">
+            <section class="project-area" style="background: #dad0d0 !important;">
+                <div class="row align-items-center">
+                    <div class="col-lg-4 col-md-5">
+                        <!-- Start Contact Info -->
+                        <div class="contact-address">
+                            <div class="single-address d-flex">
+                                <div class="icon">
+                                    <span class="lnr lnr-pushpin"></span>
+                                </div>
+                                <div class="desc">
+                                    <h5>آدرس</h5>
+                                    <p> خرم اباد خیابان انقلاب </p>
+                                </div>
+                            </div>
+                            <div class="single-address mt-30 d-flex">
+                                <div class="icon">
+                                    <span class="lnr lnr-earth"></span>
+                                </div>
+                                <div class="desc">
+                                    <h5>پست الکترونیک</h5>
+                                    <a href="mailto:info@webrubik.com">info@bfn.com</a>
+                                    <br />
+                                </div>
+                            </div>
+                            <div class="single-address mt-30 d-flex">
+                                <div class="icon">
+                                    <span class="lnr lnr-phone"></span>
+                                </div>
+                                <div class="desc">
+                                    <h5>تلفن تماس</h5>
+                                    <a href="tel:1254758">06633203454</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- EndContact Info -->
+                    </div>
+                    <div class="col-lg-8 ml-auto col-md-7">
+                        <!-- Start Contact Form -->
+                        <form id="myForm" method="post" class="contact-form text-right">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <input type="text"
+                                           name="fname"
+                                           placeholder="نام شما"
+                                           onfocus="this.placeholder = ''"
+                                           onblur="this.placeholder = 'نام شما'"
+                                           class="common-input mt-10"
+                                           required />
+                                </div>
+                                <div class="col-lg-6">
+                                    <input type="text"
+                                           name="fname"
+                                           placeholder="تلفن تماس"
+                                           onfocus="this.placeholder = ''"
+                                           onblur="this.placeholder = 'تلفن تماس'"
+                                           class="common-input mt-10"
+                                           required />
+                                </div>
+                                <div class="col-lg-12">
+                                    <input type="text"
+                                           name="fname"
+                                           placeholder="آدرس شرکت"
+                                           onfocus="this.placeholder = ''"
+                                           onblur="this.placeholder = 'آدرس شرکت'"
+                                           class="common-input mt-10"
+                                           required />
+                                </div>
+                                <div class="col-lg-6">
+                                    <input type="email"
+                                           name="email"
+                                           placeholder="پست الکترونیک"
+                                           pattern="[A-Za-z0-9._%+-]+@("@")[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$"
+                                           onfocus="this.placeholder = ''"
+                                           onblur="this.placeholder = 'پست الکترونیک'"
+                                           class="common-input mt-10"
+                                           required />
+                                </div>
+                                <div class="col-lg-6">
+                                    <input type="text"
+                                           name="fname"
+                                           placeholder="آدرس وب سایت"
+                                           onfocus="this.placeholder = ''"
+                                           onblur="this.placeholder = 'آدرس وب سایت'"
+                                           class="common-input mt-10"
+                                           required />
+                                </div>
+                                <div class="col-lg-12">
+                                    <textarea class="common-textarea mt-10"
+                                              name="message"
+                                              placeholder="متن پیام"
+                                              onfocus="this.placeholder = ''"
+                                              onblur="this.placeholder = 'متن پیام'"
+                                              required></textarea>
+                                </div>
+                                <div class="col-lg-12">
+                                    <button class="primary-btn white-bg d-inline-flex align-items-center mt-10 ml-auto">
+                                        <span class="mr-10">ارسال پیام</span><span class="lnr lnr-arrow-left"></span>
+                                    </button>
+                                    <br />
+                                    <div class="alert-msg"></div>
+                                </div>
+                            </div>
+                        </form>
+                        <!-- End Contact Form -->
+                    </div>
+                </div>
+        </div>
+    </section>
+    <!-- Start Contact Area -->
+    <section class="subscription-area">
+        <div class="container">
+            <div class="row justify-content-between">
+                <div class="col-lg-5">
+                    <div class="subscribe-content">
+                        <h3 class="text-white">عضویت در خبرنامه</h3>
+                        <p class="text-white mb-0">
+                            زودتر از همه از جدیدترین مطالب با خبر شوید...
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <!-- Start Subscribe Form -->
+                    <div id="mc_embed_signup">
+                        <form target="_blank"
+                              novalidate
+                              action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&id=92a4423d01"
+                              method="get"
+                              class="subscription relative">
+                            <input type="email"
+                                   name="EMAIL"
+                                   placeholder="پست الکترونیک"
+                                   onfocus="this.placeholder = ''"
+                                   onblur="this.placeholder = 'پست الکترونیک'"
+                                   required />
+                            <div style="position: absolute; right: -5000px">
+                                <input type="text" name="" tabindex="-1" value="" />
+                            </div>
+                            <button class="primary-btn hover d-inline-flex align-items-center">
+                                <span class="mr-10">عضویت در خبرنامه</span><span class="lnr lnr-arrow-left"></span>
+                            </button>
+                            <div class="info"></div>
+                        </form>
+                    </div>
+                    <!-- End Subscribe Form -->
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Subscription Area -->
+    <!-- Start footer Area -->
+    <footer class="footer-area relative"
+            style="background: url(pics/f-bg.jpg)">
+        <div class="overlay" style="background: rgba(163, 172, 147, 0.75)"></div>
+        <div class="container">
+            <div class="footer-content d-flex flex-column align-items-center">
+                <div class="footer-menu">
+                    <a href="index.html">صفحه نخست</a>
+                    <a href="elements.html">صفحه پایان</a>
+
+                </div>
+                <div class="footer-social">
+                    <a href="#"><i class="fa fa-facefood"></i></a>
+                    <a href="#"><i class="fa fa-twitter"></i></a>
+                    <a href="#"><i class="fa fa-dribbble"></i></a>
+                    <a href="#"><i class="fa fa-behance"></i></a>
+                </div>
+    </footer>
+    <!-- End footer Area -->
+</div>
+
+
+
+
